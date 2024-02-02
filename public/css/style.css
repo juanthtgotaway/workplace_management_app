@@ -1,0 +1,33 @@
+:root {
+    --light1: #B1DBD9;
+    --mid1: #31807D;
+    --light2: #E4DEF1;
+    --mid2: #1e1b23;
+    --dark2: #1A0C3D;
+}
+
+body {
+    background-color: var(--light2);
+}
+
+#navbar {
+    background-color: var(--mid1);
+    /* border-bottom: 3px solid var(--dark2); */
+    color: var(--mid2);
+    padding: 5px 10px;
+}
+
+#name {
+    font-family: 'Dai Banna SIL', serif;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+#login {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: xx-large;
+    text-decoration: none;
+    color: var(--mid2);
+    padding-right: 20px;
+}
+
