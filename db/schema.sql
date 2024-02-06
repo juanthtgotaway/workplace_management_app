@@ -11,6 +11,7 @@ CREATE TABLE users (
     role ENUM('admin', 'management', 'agent', 'customer_service') NOT NULL
 );
 
+-- should we rename chores?
 CREATE TABLE tasks (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE resources (
     FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
+-- should we rename reports?
 CREATE TABLE incidents (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,

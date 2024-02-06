@@ -30,12 +30,12 @@ User.init(
                 len: [8],
             },
         },
-        department: {
-            //department name or department #??
+        is_manager: {
+            type: DataTypes.BOOLEAN
+        },
+        department_id: {
             type: DataTypes.INTEGER,
-            // type: DataTypes.STRING
             allowNull: false,
-            // is_admin: Boolean, !! need to add column for boolean value of if user is admin in their department or not
         },
     },
     {
