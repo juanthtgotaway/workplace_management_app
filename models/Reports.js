@@ -22,13 +22,17 @@ Reports.init(
                 len: [10]
             },
         },
-        user_id: {
+        reported_by: {
             type: DataTypes.INTEGER,
             references: {
                 model: "user",
                 key: "id",
             },
         },
+        status: {
+            type: DataTypes.ENUM('pending', 'resolvded', 'closed'),
+            defaultValue: 'pending',
+        }
     },
     {
         sequelize,
