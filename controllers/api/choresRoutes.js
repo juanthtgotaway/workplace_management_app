@@ -3,7 +3,7 @@ const { Chores } = require('../../models');
 
 
 // Get exisitig chorse 
-outer.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
     
       const choresData = await Chores.findAll();
