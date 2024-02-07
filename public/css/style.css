@@ -1,16 +1,18 @@
 :root {
     --light1: #94F4F0;
     --mid1: #29aaa6;
-    --light2: #EAE1F5;
+    --light2: #fff;
+    --mid2: #717171;
     --dark2: #363636;
 }
 
 body {
-    background-color: var(--dark2);
+    background: rgb(113, 113, 113);
+    background: linear-gradient(0deg, rgba(9, 9, 9, 1) 0%, rgba(113, 113, 113, 1) 100%);
 }
 
 #navbar {
-    /* background-color: var(--mid1); */
+    background-color: var(--dark2);
     border: 0px solid var(--mid1);
     border-bottom: 3px solid var(--mid1);
     color: var(--mid1);
@@ -23,15 +25,20 @@ body {
     margin-bottom: 0px;
 }
 
-#loginBtn {
+.navBtn {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: xx-large;
     text-decoration: none;
     color: var(--mid1);
     padding-right: 20px;
+
 }
 
-.accForm{
+#loginBtn {
+    padding-right: 20px;
+}
+
+.accForm {
     border: solid var(--mid1);
     border-width: 0px 2px 0px 2px;
     color: var(--mid1);
@@ -41,16 +48,50 @@ body {
     border-bottom: 3px solid var(--mid1);
 }
 
-.textbox1{
+.textbox1 {
     width: 100%;
 }
 
-.inpRow{
+.inpRow {
     padding-bottom: 20px;
 }
 
-.customBtn{
+.customBtn {
     color: var(--dark2);
     background-color: var(--mid1);
     width: 20%
 }
+
+#cusW{
+    width: 90%;
+    margin-top: 2%;
+}
+
+#cusW ul li{
+    margin-bottom: 2%;
+}
+
+.titleBar{
+    background-color: var(--dark2);
+    padding: 4px 0%;
+    border: 2px solid var(--light1);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--light1);
+}
+
+.titleBar h1 {
+    font-size: x-large;
+    margin-bottom: 0%;
+}
+
+.infoBody {
+    background-color: var(--mid2);
+    padding: 1% 2%;
+    width: 100%;
+}
+
+.names{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
