@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "title": "Exploded",
+        "content": "Computer Exploded",
+        "reported_by": "4",
+        "status": "pending"
+    },
+    {
+        "id": "2",
+        "title": "Lost Client",
+        "content": "Major firm has left for competitor company",
+        "reported_by": "3",
+        "status": "resolved"
+    },
+    {
+        "id": "3",
+        "title": "Fight",
+        "content": "everyone fought at lunch today, few physical casualties, egos shattered.",
+        "reported_by": "1",
+        "status": "pending"
+    },
+    {
+        "id": "4",
+        "title": "Hungry",
+        "content": "I'm very hungry and don't know what to do about it. This is unnacceptable",
+        "reported_by": "2",
+        "status": "closed"
+    }
+]

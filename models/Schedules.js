@@ -26,11 +26,11 @@ Schedules.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        startTime: {
+        start_time: {
             type: DataTypes.TIME,
             allowNull: false,
         },
-        endTime: {
+        end_time: {
             type: DataTypes.TIME,
             allowNull: false,
         },
