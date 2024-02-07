@@ -1,0 +1,37 @@
+[{
+    "id": "1",
+    "first_name": "Will",
+    "last_name": "Doopi",
+    "username": "BigDoop",
+    "pasword": "password!",
+    "is_manager": "true",
+    "department": "Administration"
+},
+{
+    "id": "2",
+    "first_name": "Holli",
+    "last_name": "Goat",
+    "username": "HolliGoat",
+    "pasword": "HollitheGoat",
+    "is_manager": "true",
+    "department": "Human Resources"
+},
+{
+    "id": "3",
+    "first_name": "Charles",
+    "last_name": "Blumbo",
+    "username": "ChuckB44",
+    "pasword": "Chuckles2",
+    "is_manager": "true",
+    "department": "Sales"
+},
+{
+    "id": "4",
+    "first_name": "Veroniconica",
+    "last_name": "Gigoo",
+    "username": "luvcomputer",
+    "pasword": "luvcomputer$$",
+    "is_manager": "true",
+    "department": "IT"
+}
+]

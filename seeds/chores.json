@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "chore_name": "Bathroom",
+        "chore_description": "Clean and stock office bathroom",
+        "user_id": "2"
+    },
+    {
+        "id": "2",
+        "chore_name": "Sanitize",
+        "chore_description": "Sanitize phones and high traffic surfaces",
+        "user_id": "3"
+    },
+    {
+        "id": "3",
+        "chore_name": "Inventory",
+        "chore_description": "Take inventory of supplies, products, and materials.",
+        "user_id": "1"
+    },
+    {
+        "id": "4",
+        "chore_name": "Wellness Reviews",
+        "chore_description": "Interview each employee of the company on their happiness and satisfaction with their roles.",
+        "user_id": "2"
+    }
+]
