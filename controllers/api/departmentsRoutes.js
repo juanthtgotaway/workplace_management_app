@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a single department by ID
+// Get a single department
 router.get('/:id', async (req, res) => {
   try {
     const department = await Department.findByPk(req.params.id);
