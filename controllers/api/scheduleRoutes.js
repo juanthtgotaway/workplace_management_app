@@ -15,7 +15,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 })
 
-router.put('./:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try{
         const eventData = await Schedules.update(req.body, {
             where: {
@@ -34,7 +34,7 @@ router.put('./:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('./:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const eventData = await Schedules.destroy({
             where: {
