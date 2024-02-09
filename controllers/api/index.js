@@ -1,9 +1,9 @@
-const router = require ('express').Router();
-const scheduleRoutes = require('./scheduleRoutes');
-const userRoutes = require('./userRoutes');
+const router = require('express').Router();
 
-router.use('/schedule', scheduleRoutes);
-router.use('/users', userRoutes);
+const chores = require('./choresRoutes');
+const reports = require('./reportsRoutes');
+
+router.use('/reports', chores);
+router.use('/chores', reports);
 
 module.exports = router;
-

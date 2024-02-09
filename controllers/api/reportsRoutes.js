@@ -1,10 +1,20 @@
 const router = require('express').Router();
 const { Reports } = require('../../models');
 
+router.get('/', async (req, res) => {
+  try {
+    const reportData = await Reports.findAll();
+    res.status(201).json(reportData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 // Create a new indcident 
 router.post('/', async (req, res) => {
   try {
-    const newReport = await Report.create({
+    const newReport = await Reports.create({
       ...req.body,
       user_id: req.session.user_id,
       status: 'Pending', 
@@ -19,7 +29,7 @@ router.post('/', async (req, res) => {
 // Update a reported incident
 router.put('/:id', async (req, res) => {
     try {
-      const updatedReport = await Report.update(req.body, {
+      const updatedReport = await Reports.update(req.body, {
         where: {
           id: req.params.id,
           user_id: req.session.user_id,
@@ -31,7 +41,7 @@ router.put('/:id', async (req, res) => {
         return;
       }
   
-      const updatedData = await Report.findByPk(req.params.id);
+      const updatedData = await Reports.findByPk(req.params.id);
   
       res.status(200).json(updatedData);
     } catch (err) {
@@ -42,7 +52,7 @@ router.put('/:id', async (req, res) => {
 // Delete a reported incident
 router.delete('/:id', async (req, res) => {
   try {
-    const reportData = await Report.destroy({
+    const reportData = await Reports.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
