@@ -10,19 +10,24 @@ User.hasMany(Chores, {
     foreignKey: 'user_id'
 });
 
-User.hasMany(Reports, {
+Chores.belongsTo(User, {
     foreignKey: 'user_id'
 });
+
+User.hasMany(Reports, {
+    foreignKey: 'reported_by',
+    onDelete: 'CASCADE'
+});
+
+Reports.belongsTo(User, {
+    foreignKey: 'reported_by'
+})
 
 User.hasOne(Departments, {
     foreignKey: 'user_id'
 });
 
 User.hasOne(Schedules, {
-    foreignKey: 'user_id'
-});
-
-Chores.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
@@ -34,4 +39,4 @@ Departments.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Departments , Reports, Chores, Schedules};
+module.exports = { User, Departments , Reports, Chores, Schedules };
