@@ -1,24 +1,38 @@
-<div class="container">
+<div class="container align-items-center">
     <div class="row col-md-8">
         <h2>
             Office Chore List
         </h2>
+
+    <ul id="list">
+        {{#each chores as |chore|}}
+        <li class="text" id="{{chore.id}}">
+            <div class="titleBar row justify-content-between">
+                <h1 class="col text-start">{{chore.chore_name}}</h1>
+            </div>
+            <div class="infoBody" hidden>
+                <p>{{chore.description}}</p>
+                <p class="text-end names mb-0">Assigned to: <b> {{chore.user.first_name}} {{chore.user.last_name}}</b></p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
         <form class="form mb-4 mx-2">
             <div class=" mb-4 mx-2">
                 <label for="newChore" class="form-label">Add Chore:</label>
                 <input type="text" name="newChore" class="form-control">
             </div>
             <div class=" mb-4 mx-2">
-                <label for="catType" class="form-label">Chore Description:</label>
-                <input type="text" name="catType" class="form-control">
+                <label for="choreName" class="form-label">Chore Description:</label>
+                <input type="text" name="choreName" class="form-control">
             </div>
-            <div class="mb-4 mx-2">
+            {{!-- <div class="mb-4 mx-2">
                 <label for="user" class="form-label">Assigned to:</label>
                 <input list="datalistOptions" class="form-control" id="datalist" placeholder="Select Employee">
                 <datalist id="userList">
                     ${user.map(user => `<option value="${user}">`).join('')}
                 </datalist>
-            </div>
+            </div> --}}
 
         </form>
 
