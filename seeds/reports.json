@@ -23,7 +23,7 @@
     {
         "id": "4",
         "title": "Hungry",
-        "content": "I'm very hungry and don't know what to do about it. This is unnacceptable",
+        "content": "I'm very hungry and don't know what to do about it. This is unnacceptable.",
         "reported_by": "2",
         "status": "closed"
     }

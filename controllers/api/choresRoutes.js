@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Chores } = require('../../models');
+const { User } = require('../../models');
 
 
-// Get exisitig chorse 
+// Get existing chores
 router.get('/', async (req, res) => {
     try {
     
@@ -14,6 +15,16 @@ router.get('/', async (req, res) => {
     }
   });
 
+//Get user to assign chore to
+  router.get('/', async (req, res) => {
+    try {
+      const userData = await User.findAll({ attributes: ['first_name', 'last_name'] });
+      return userData.map(user => user.first_name.last_name);
+    } catch (err) {
+      console.error('Error finding user:', err);
+      return[];
+    }
+  });
 
 
 // Create a new chore
@@ -67,6 +78,5 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
