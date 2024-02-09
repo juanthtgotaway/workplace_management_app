@@ -24,6 +24,12 @@ body {
     font-family: 'Dai Banna SIL', serif;
     font-style: italic;
     margin-bottom: 0px;
+    text-decoration: none;
+    color: var(--mid1);
+}
+
+#home{
+    color: var(--mid1);
 }
 
 .navBtn {
