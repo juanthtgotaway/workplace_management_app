@@ -169,29 +169,6 @@ router.get('/reports/:id', withAuth ,async (req, res) => {
     }
 });
 
-//get all reports 
-router.get('/reports', withAuth, async(req, res) => {
-    try{
-        const reportData = await Reports.findAll({
-            include: [
-                {
-                    model: Reports,
-                    attributes: [id],
-                },
-            ],
-        });
-
-        const reports = reportData.map((reports) => reports.get({ plain: true }));
-
-        res.render('reports', {
-            reports,
-            logged_in: req.session.logged_in
-        });
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
-
 //get profile 
 router.get('/profile', withAuth, async (req, res) => {
     try{
