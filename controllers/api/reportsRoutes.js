@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a reported incident by ID (not finished)
+// Update a reported incident
 router.put('/:id', async (req, res) => {
     try {
       const updatedReport = await Reports.update(req.body, {
