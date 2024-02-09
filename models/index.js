@@ -1,6 +1,5 @@
 const User = require('./User');
-const Departments = require('./Departments');
-
+const Departments = require('./departments');
 const Chores = require('./Chores');
 const Reports = require('./Reports');
 const Schedules = require('./Schedules');
