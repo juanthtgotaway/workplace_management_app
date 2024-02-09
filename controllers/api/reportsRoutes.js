@@ -11,6 +11,15 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/', async (req, res) => {
+  try {
+    const reportData = await Reports.findAll();
+    res.status(201).json(reportData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // Create a new indcident 
 router.post('/', async (req, res) => {
   try {

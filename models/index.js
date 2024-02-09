@@ -1,5 +1,6 @@
 const User = require('./User');
 const Departments = require('./Departments');
+
 const Chores = require('./Chores');
 const Reports = require('./Reports');
 const Schedules = require('./Schedules');
@@ -34,4 +35,5 @@ Departments.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { User, Departments , Reports, Chores, Schedules};
+module.exports = { User, Departments, Reports, Chores, Schedules };
+

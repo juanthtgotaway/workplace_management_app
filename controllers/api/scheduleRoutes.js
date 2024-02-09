@@ -17,14 +17,17 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
     try{
+
         const eventData = await Schedules.update(req.body, {
             where: {
                 id: req.params.id,
             },
         });
 
+
         if(!eventData) {
-            res.status(404).json({ message: 'No event found with this ID :('});
+            res.status(404).json({ message: 'No event found with this ID :(' });
+
             return;
         }
 
@@ -43,8 +46,9 @@ router.delete('/:id', withAuth, async (req, res) => {
             },
         });
 
+
         if(!eventData) {
-            res.status(404).json({ message: 'No event found with this id :('});
+            res.status(404).json({ message: 'No event found with this id :(' });
             return;
         }
 

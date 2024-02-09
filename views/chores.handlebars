@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row col-md-8">
+        <h2>
+            Office Chore List
+        </h2>
+        <form class="form mb-4 mx-2">
+            <div class=" mb-4 mx-2">
+                <label for="newChore" class="form-label">Add Chore:</label>
+                <input type="text" name="newChore" class="form-control">
+            </div>
+            <div class=" mb-4 mx-2">
+                <label for="catType" class="form-label">Chore Description:</label>
+                <input type="text" name="catType" class="form-control">
+            </div>
+            <div class="mb-4 mx-2">
+                <label for="user" class="form-label">Assigned to:</label>
+                <input list="datalistOptions" class="form-control" id="datalist" placeholder="Select Employee">
+                <datalist id="userList">
+                    ${user.map(user => `<option value="${user}">`).join('')}
+                </datalist>
+            </div>
+
+        </form>
+
+    </div>
+</div>
