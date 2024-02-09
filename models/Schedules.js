@@ -14,7 +14,7 @@ Schedules.init(
             autoIncrement: true,
         },
         user_id: {
-            types: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: "user",
@@ -23,7 +23,7 @@ Schedules.init(
         },
         day: {
             // type: DataTypes.DATE, should date or string be used?
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         start_time: {
@@ -45,3 +45,4 @@ Schedules.init(
 );
 
 module.exports = Schedules;
+

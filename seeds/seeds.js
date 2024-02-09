@@ -10,23 +10,23 @@ const choresData = require('./chores.json');
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
-    await User.bulkCreate(userData, {
+    const user = await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
-    await Reports.bulkCreate(reportsData, {
+    const reports = await Reports.bulkCreate(reportsData, {
         individualHooks: true,
         returning: true,
     });
-    await Departments.bulkCreate(departmentsData, {
+    const departments = await Departments.bulkCreate(departmentsData, {
         individualHooks: true,
         returning: true,
     });
-    await Schedules.bulkCreate(schedulesData, {
+    const schedules = await Schedules.bulkCreate(schedulesData, {
         individualHooks: true,
         returning: true,
     });
-    await Chores.bulkCreate(choresData, {
+    const chores = await Chores.bulkCreate(choresData, {
         individualHooks: true,
         returning: true,
     });

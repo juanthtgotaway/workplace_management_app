@@ -3,35 +3,35 @@
     "first_name": "Will",
     "last_name": "Doopi",
     "username": "BigDoop",
-    "pasword": "password!",
+    "password": "password!",
     "is_manager": "true",
-    "department": "Administration"
+    "department": "1"
 },
 {
     "id": "2",
     "first_name": "Holli",
     "last_name": "Goat",
     "username": "HolliGoat",
-    "pasword": "HollitheGoat",
+    "password": "HollitheGoat",
     "is_manager": "true",
-    "department": "Human Resources"
+    "department": "2"
 },
 {
     "id": "3",
     "first_name": "Charles",
     "last_name": "Blumbo",
     "username": "ChuckB44",
-    "pasword": "Chuckles2",
+    "password": "Chuckles2",
     "is_manager": "true",
-    "department": "Sales"
+    "department": "3"
 },
 {
     "id": "4",
     "first_name": "Veroniconica",
     "last_name": "Gigoo",
     "username": "luvcomputer",
-    "pasword": "luvcomputer$$",
+    "password": "luvcomputer$$",
     "is_manager": "true",
-    "department": "IT"
+    "department": "4"
 }
 ]
