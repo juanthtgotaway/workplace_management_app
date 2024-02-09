@@ -25,6 +25,7 @@ const seedDatabase = async () => {
     const schedules = await Schedules.bulkCreate(schedulesData, {
         individualHooks: true,
         returning: true,
+        
     });
     const chores = await Chores.bulkCreate(choresData, {
         individualHooks: true,

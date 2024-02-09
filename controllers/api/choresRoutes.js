@@ -64,7 +64,19 @@ router.put('/:id', async (req, res) => {
     }
   });
 
-
-
+// Delete a chore
+router.delete('/:id', async (req, res) => {
+  try {
+      const choreData = await Chores.findByPk(req.params.id);
+      if (!choreData) {
+          res.status(404).json({ message: 'Chore not found' });
+          return;
+      }
+      await choreData.destroy();
+      res.status(204).end();
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
 
 module.exports = router;

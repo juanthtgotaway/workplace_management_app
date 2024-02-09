@@ -1,5 +1,15 @@
 const router = require('express').Router();
-const { Reports } = require('../../models');
+const { Report } = require('../../models');
+
+router.get('/', async (req, res) => {
+  try {
+    const reportData = await Reports.findAll();
+    res.status(201).json(reportData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 router.get('/', async (req, res) => {
   try {
@@ -25,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a reported incident by ID (not finished)
+// Update a reported incident
 router.put('/:id', async (req, res) => {
     try {
       const updatedReport = await Reports.update(req.body, {

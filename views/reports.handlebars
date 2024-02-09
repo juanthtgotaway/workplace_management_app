@@ -1,0 +1,18 @@
+<div class="container align-items-center" id="cusW">
+        <ul id="list">
+            {{!-- ADD AN {each} --}}
+            <li class="text" id="{{report.id}}">
+                <div class="titleBar row justify-content-between">
+                    <h1 class="col text-start">{{report.title}}</h1>
+                    <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
+                    <h1 class="col text-end {{report.status}}">{{report.status}}</h1>
+                </div>
+                <div class="infoBody" hidden>
+                    <p>{{report.content}}</p>
+                    <p class="text-end names mb-0">Reported by: <b> {{report.reported_by}}</b></p>
+                </div>
+            </li>
+            {{!-- END EACH --}}
+        </ul>
+    </div>
+    <script src="../public/js/list.js"></script>

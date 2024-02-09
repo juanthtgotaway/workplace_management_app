@@ -10,7 +10,7 @@
         "id": 2,
         "user_id": 2,
         "day": "monday",
-        "start_time": "8",
+        "start_time": "08:00:00",
         "end_time": "03:00:00"
     },
     {
