@@ -1,8 +1,18 @@
 const router = require('express').Router();
 const { Schedules } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+// FIX ROUTE FIRST
+router.get('/', async (req, res) => {
+    try {
+        const eventData = await Schedules.findAll();
+        res.status(201).json(eventData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.post('/', async (req, res) => {
     try{
         const newEvent = await Schedules.create({
             ...req.body,
@@ -15,7 +25,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 })
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try{
 
         const eventData = await Schedules.update(req.body, {
@@ -37,7 +47,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const eventData = await Schedules.destroy({
             where: {
@@ -58,11 +68,4 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/', withAuth, async(req, res) => {
-    try {
-        const eventData = await Schedules.findAll();
-        res.status(200).json(eventData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+module.exports = router;
