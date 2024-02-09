@@ -1,9 +1,12 @@
 const sequelize = require('../config/connection');
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+
+
 
 class User extends Model {
     checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password)
+        return bcrypt.compareSync(loginPw, this.password);
     }
 }
 
@@ -15,7 +18,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        employee_name: {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -30,22 +37,24 @@ User.init(
                 len: [8],
             },
         },
-        department: {
-            //department name or department #??
+        is_manager: {
+            type: DataTypes.BOOLEAN
+        },
+        department_id: {
             type: DataTypes.INTEGER,
-            // type: DataTypes.STRING
             allowNull: false,
-            // is_admin: Boolean, !! need to add column for boolean value of if user is admin in their department or not
         },
     },
     {
         hooks: {
-            async beforeCreate(newUserData) {
+            beforeCreate: async (newUserData) => {
+                console.log(newUserData);
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
-            async beforeUpdate(updatedUser) {
-                updatedUser.password = bcrypt.hash(updatedUser.password, 10)
+            beforeUpdate: async (updatedUser) => {
+                updatedUser.password = await bcrypt.hash(updatedUser.password, 10)
+                return updatedUser;
             },
         },
         sequelize,

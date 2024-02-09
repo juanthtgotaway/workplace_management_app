@@ -14,7 +14,7 @@ Schedules.init(
             autoIncrement: true,
         },
         user_id: {
-            types: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: "user",
@@ -26,11 +26,11 @@ Schedules.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        startTime: {
+        start_time: {
             type: DataTypes.TIME,
             allowNull: false,
         },
-        endTime: {
+        end_time: {
             type: DataTypes.TIME,
             allowNull: false,
         },

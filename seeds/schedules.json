@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "user_id": 1,
+        "day": "monday",
+        "start_time": "12:30:45",
+        "end_time": "12:30:45"
+    },
+    {
+        "id": "2",
+        "user_id": 2,
+        "day": "monday",
+        "start_time": "12:30:45",
+        "end_time": "12:30:45"
+    },
+    {
+        "id": "3",
+        "user_id": 3,
+        "day": "monday",
+        "start_time": "12:30:45",
+        "end_time": "12:30:45"
+    },
+    {
+        "id": "4",
+        "user_id": 4,
+        "day": "monday",
+        "start_time": "12:30:45",
+        "end_time": "12:30:45"
+    }
+]

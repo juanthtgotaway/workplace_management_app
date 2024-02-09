@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "department_name": "Administration",
+        "manager": 1
+    },
+    {
+        "id": 2,
+        "department_name": "Human Resources",
+        "manager": 2
+    },
+    {
+        "id": 3,
+        "department_name": "Sales",
+        "manager": 3
+    },
+    {
+        "id": 4,
+        "department_name": "IT",
+        "manager": 4
+    }
+
+]

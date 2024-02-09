@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require ('express').Router();
 const { Schedule, Chores, Departments, Reports, User } = require('../models');
 const withAuth = require('../utils/auth');
@@ -191,5 +192,7 @@ router.get('/login', (req, res) => {
 
     res.render('login');
 });
+=======
+>>>>>>> 627fb4a4c3ff857db2750313b84eb5b32301c85b
 
 module.exports = router;
