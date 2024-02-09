@@ -30,7 +30,7 @@ Reports.init(
             },
         },
         status: {
-            type: DataTypes.ENUM('pending', 'resolvded', 'closed'),
+            type: DataTypes.ENUM('pending', 'resolved', 'closed'),
             defaultValue: 'pending',
         }
     },

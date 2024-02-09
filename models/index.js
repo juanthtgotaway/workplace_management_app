@@ -1,36 +1,37 @@
-const User = require('./models/User');
-const Department = require('./models/Departments');
-const Chores = require('./models/Chores');
-const Reports = require('./models/Reports');
-const Schedules = require('/models/Schedules');
+const User = require('./User');
+const Departments = require('./Departments');
+const Chores = require('./Chores');
+const Reports = require('./Reports');
+const Schedules = require('./Schedules');
 
 
 //not completed key relationships
 User.hasMany(Chores, {
-    foreignKey: user_id
+    foreignKey: 'user_id'
 });
 
 User.hasMany(Reports, {
-    foreignKey: user_id
+    foreignKey: 'user_id'
 });
 
-User.hasOne(Department, {
-    foreignKey: user_id
+User.hasOne(Departments, {
+    foreignKey: 'user_id'
 });
 
 User.hasOne(Schedules, {
-    foreignKey: user_id
+    foreignKey: 'user_id'
 });
 
 Chores.belongsTo(User, {
-    foreignKey: user_id
+    foreignKey: 'user_id'
 });
 
 Schedules.belongsTo(User, {
-    foreignKey: user_id
+    foreignKey: 'user_id'
 });
 
-Department.belongsTo(User, {
-    foreignKey: user_id
+Departments.belongsTo(User, {
+    foreignKey: 'user_id'
 });
 
+module.exports = { User, Departments , Reports, Chores, Schedules};
