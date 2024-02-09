@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Reports } = require('../../models');
+const { Report } = require('../../models');
 
 // Create a new indcident 
 router.post('/', async (req, res) => {
