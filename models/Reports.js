@@ -22,7 +22,7 @@ Reports.init(
                 len: [10]
             },
         },
-        reported_by: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: "user",

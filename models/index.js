@@ -15,12 +15,12 @@ Chores.belongsTo(User, {
 });
 
 User.hasMany(Reports, {
-    foreignKey: 'reported_by',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
 Reports.belongsTo(User, {
-    foreignKey: 'reported_by'
+    foreignKey: 'user_id'
 })
 
 User.hasOne(Departments, {
