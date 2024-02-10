@@ -16,7 +16,7 @@ Reports.init(
         allowNull: false,
         },
         content: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [10]

@@ -5,6 +5,10 @@
     --light2: #fff;
     --mid2: #717171;
     --dark2: #363636;
+    --light3: #a38e9b;
+    --mid3: #C785AE;
+    --light4: #AAC864;
+    --deSat4: #888e78;
 }
 
 body {
@@ -24,11 +28,17 @@ body {
     font-family: 'Dai Banna SIL', serif;
     font-style: italic;
     margin-bottom: 0px;
+    text-decoration: none;
+    color: var(--mid1);
+}
+
+#home {
+    color: var(--mid1);
 }
 
 .navBtn {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: xx-large;
+    font-size: x-large;
     text-decoration: none;
     color: var(--mid1);
     padding-right: 20px;
@@ -58,21 +68,39 @@ body {
 }
 
 .customBtn {
-    color: var(--dark2);
+    color: var(--dark1);
     background-color: var(--light1);
     width: 20%
 }
 
-#cusW{
+.customBtn:hover {
+    color: var(--light1);
+    background-color: var(--dark1);
+    /* border: 2px solid var(--light1); */
+}
+
+.cusForm {
+    background: rgb(12, 115, 112);
+    background: radial-gradient(circle, rgba(12, 115, 112, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    color: var(--light1);
+    border: 2px solid var(--light1);
+    border-radius: 20px;
+}
+
+.textbox2 {
+    width: 95%;
+}
+
+#cusW {
     width: 90%;
     margin-top: 2%;
 }
 
-#cusW ul li{
+#cusW ul li {
     margin-bottom: 2%;
 }
 
-.titleBar{
+.titleBar {
     background-color: var(--dark2);
     padding: 4px 0%;
     border: 2px solid var(--light1);
@@ -91,8 +119,29 @@ body {
     width: 100%;
 }
 
-.names{
+.names {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: large;
+}
+
+/* pending', 'resolvded', 'closed' */
+.pending {
+    color: var(--mid3);
+}
+
+.pendingBody {
+    background-color: var(--light3);
+}
+
+.resolved {
+    color: var(--light4);
+}
+
+.resolvedBody {
+    background-color: var(--deSat4);
+}
+
+.closed {
+    color: var(--mid2);
 }
 

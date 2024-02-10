@@ -16,13 +16,13 @@
 <body>
     <nav class="container-fluid" id="navbar">
         <div class="row align-items-center justify-content-between">
-            <h1 class="col-6 text-start display-3" id="name">Workplace Manager</h1>
+            <a class="col-6 text-start display-3" id="name" href="/">Workplace Manager</a>
             {{!-- <!-- put {{if loggedIn}} here --> --}}
-            {{!-- <a class="col text-end navBtn" id="loginBtn" href="">Login</a> --}}
+            {{!-- <a class="col text-end navBtn" id="loginBtn" href="/login">Login</a> --}}
             {{!-- <!-- if loggedIn true --> --}}
             <div class="col-6 row justify-content-end" id="navBarBtns">
-                <a class="col-md-auto navBtn" href="" id="reportsBtn">Reports</a>
-                <a class="col-md-auto navBtn" href="" id="toDoBtn">To-Do</a>
+                <a class="col-md-auto navBtn" href="/reports" id="reportsBtn">Reports</a>
+                <a class="col-md-auto navBtn" href="/chores" id="toDoBtn">To-Do</a>
                 <a class="col-md-auto navBtn" href="" id="schedulesBtn">Schedules</a>
             </div>
         </div>
