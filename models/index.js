@@ -3,6 +3,7 @@ const Departments = require('./departments');
 const Chores = require('./Chores');
 const Reports = require('./Reports');
 const Schedules = require('./Schedules');
+// const DepEmployees = require('./DepEmployees')
 
 
 //not completed key relationships
@@ -35,9 +36,12 @@ Schedules.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
+// TODO FIX EMPLOYEES AND DEPARTMENTS RELATIONS
 Departments.belongsTo(User, {
     foreignKey: 'user_id'
 });
+
+
 
 module.exports = { User, Departments, Reports, Chores, Schedules };
 
