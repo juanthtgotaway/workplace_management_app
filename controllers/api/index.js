@@ -6,6 +6,8 @@ const schedules = require('./scheduleRoutes');
 const departments = require('./departmentsRoutes');
 const user = require('./userRoutes');
 
+
+router.use('/user', users);
 router.use('/reports', reports);
 router.use('/chores', chores);
 router.use('/schedule', schedules);
