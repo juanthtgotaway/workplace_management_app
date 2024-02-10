@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Department } = require('../../models');
+const { Departments } = require('../../models');
 
 // Get all departments
 router.get('/', async (req, res) => {
   try {
-    const departments = await Department.findAll();
+    const departments = await Departments.findAll();
     res.status(200).json(departments);
   } catch (err) {
     res.status(500).json(err);
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 // Get a single department
 router.get('/:id', async (req, res) => {
   try {
-    const department = await Department.findByPk(req.params.id);
+    const department = await Departments.findByPk(req.params.id);
     if (!department) {
       res.status(404).json({ message: 'Department not found' });
       return;
@@ -28,9 +28,10 @@ router.get('/:id', async (req, res) => {
 // Create a new department
 router.post('/', async (req, res) => {
   try {
-    const newDepartment = await Department.create(req.body);
+    const newDepartment = await Departments.create(req.body);
     res.status(201).json(newDepartment);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -38,7 +39,7 @@ router.post('/', async (req, res) => {
 // Update a department
 router.put('/:id', async (req, res) => {
   try {
-    const updatedDepartment = await Department.update(req.body, {
+    const updatedDepartment = await Departments.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -57,7 +58,7 @@ router.put('/:id', async (req, res) => {
 // Delete department 
 router.delete('/:id', async (req, res) => {
   try {
-    const department = await Department.findByPk(req.params.id);
+    const department = await Departments.findByPk(req.params.id);
     if (!department) {
       res.status(404).json({ message: 'Department not found' });
       return;
