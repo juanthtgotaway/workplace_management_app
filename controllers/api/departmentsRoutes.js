@@ -63,13 +63,14 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: 'Department not found' });
       return;
     }
-    await Department.destroy({
+    await department.destroy({
       where: {
         id: req.params.id,
       },
     });
     res.status(200).json({ message: 'Department deleted successfully' });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
