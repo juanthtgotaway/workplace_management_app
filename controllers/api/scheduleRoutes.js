@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Schedules } = require('../../models');
 // const withAuth = require('../../utils/auth');
 
-// FIX ROUTE FIRST
 router.get('/', async (req, res) => {
     try {
         const eventData = await Schedules.findAll();
@@ -12,18 +11,34 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+      const eventData = await Schedules.findByPk(req.params.id);
+      if (!eventData) {
+        res.status(404).json({ message:'No event found with this ID :(' });
+        return;
+      }
+      res.status(200).json(eventData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
+
 router.post('/', async (req, res) => {
     try{
-        const newEvent = await Schedules.create({
-            ...req.body,
-            user_id: req.session.user_id,
-        });
-
-        res.status(200).json(newEvent);
+      const newEvent = await Schedules.create({
+        ...req.body,
+        user_id: req.session.user_id,
+        status: 'Pending',
+      });
+  
+      res.status(200).json(newEvent);
     } catch (err) {
-        res.status(400).json(err);
+        console.log(err);
+      res.status(400).json(err);
     }
-})
+});
+  
 
 router.put('/:id', async (req, res) => {
     try{

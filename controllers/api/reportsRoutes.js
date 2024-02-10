@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Reports } = require('../../models');
-const { User } = require('../../models/User')
 
 router.get('/', async (req, res) => {
   try {
@@ -12,9 +11,9 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const reportData = await Reports.findAll();
+    const reportData = await Reports.findByPk(req.params.id);
     res.status(201).json(reportData);
   } catch (err) {
     res.status(400).json(err);
@@ -42,7 +41,6 @@ router.put('/:id', async (req, res) => {
       const updatedReport = await Reports.update(req.body, {
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
         },
       });
   
@@ -55,6 +53,7 @@ router.put('/:id', async (req, res) => {
   
       res.status(200).json(updatedData);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   });
@@ -65,7 +64,6 @@ router.delete('/:id', async (req, res) => {
     const reportData = await Reports.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 
@@ -76,6 +74,7 @@ router.delete('/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Incident report deleted successfully' });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
