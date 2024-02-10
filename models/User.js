@@ -38,10 +38,7 @@ User.init(
         is_manager: {
             type: DataTypes.BOOLEAN
         },
-        department_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
+        // dep id deleted
     },
     {
         hooks: {

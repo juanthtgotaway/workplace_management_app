@@ -11,18 +11,18 @@ DepEmployees.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        department_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'department',
-                key: 'id',
-                unique: false
-            }
-        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
+                key: 'id',
+                unique: false
+            }
+        },
+        department_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'department',
                 key: 'id',
                 unique: false
             }

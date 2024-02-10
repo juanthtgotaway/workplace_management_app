@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const userData = await User.findOne({ where: { username: req.body.username } });
 
         if (!userData) {
             res
@@ -47,9 +47,13 @@ router.post('/login', async (req, res) => {
             return;
         }
 
+        const isManager = userData.is_manager
+
+
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            req.session.is_manager = isManager;
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });
