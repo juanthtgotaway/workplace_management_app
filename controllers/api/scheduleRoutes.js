@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
     try{
       const newEvent = await Schedules.create({
         ...req.body,
-        user_id: req.session.user_id,
+        user_id: req.body.user_id,
         status: 'Pending',
       });
   
@@ -67,7 +67,6 @@ router.delete('/:id', async (req, res) => {
         const eventData = await Schedules.destroy({
             where: {
                 id: req.params.id, 
-                user_id: req.session.user_id,
             },
         });
 
