@@ -25,14 +25,15 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    try {
-        const newEvent = await Schedules.create({
-            ...req.body,
-            user_id: req.session.user_id,
-            status: 'Pending',
-        });
+    try{
+      const newEvent = await Schedules.create({
+        ...req.body,
+        user_id: req.body.user_id,
+        status: 'Pending',
+      });
+  
+      res.status(200).json(newEvent);
 
-        res.status(200).json(newEvent);
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
@@ -66,8 +67,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const eventData = await Schedules.destroy({
             where: {
-                id: req.params.id,
-                user_id: req.session.user_id,
+                id: req.params.id, 
             },
         });
 
