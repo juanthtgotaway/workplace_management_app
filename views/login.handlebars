@@ -1,55 +1,68 @@
 <div class="row justify-content-around">
-    <div class="col-6">
+    <div class="col-6 signForm">
         <form class="accForm text-center row" id="login">
 
             <h1 class="">Login</h1>
 
             <div class="row inpRow">
-                <label class="col-2 label1" for="user-login">Username:</label>
-                <div class="col-10">
+                <label class="col-3 label1" for="user-login">Username:</label>
+                <div class="col-9 p-0">
                     <input type="text" class="textbox1" id="user-login">
                 </div>
             </div>
 
             <div class="row inpRow">
-                <label class="col-2 label1" for="pass-login">Password:</label>
-                <div class="col-10">
+                <label class="col-3 label1" for="pass-login">Password:</label>
+                <div class="col-9 p-0">
                     <input type="text" class="textbox1" id="pass-login">
                 </div>
             </div>
 
             <div class="pb-1">
-                <button class="btn customBtn" type="submit">Login</button>
+                <button class="btn customBtn" id="loginBtn" type="submit">Login</button>
             </div>
 
         </form>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 signForm">
         <form class="accForm text-center row" id="sign-up">
 
             <h1>Sign-up</h1>
 
             <div class="row inpRow">
-                <label class="col-2 label1" for="user-sign-up">Username:</label>
-                <div class="col-10">
+                <label class="col-3 label1" for="Fname-sign-up">First Name:</label>
+                <div class="col-9 p-0">
+                    <input type="text" class="textbox1" id="Fname-sign-up">
+                </div>
+            </div>
+
+            <div class="row inpRow">
+                <label class="col-3 label1" for="Lname-sign-up">Last Name:</label>
+                <div class="col-9 p-0">
+                    <input type="text" class="textbox1" id="Lname-sign-up">
+                </div>
+            </div>
+
+            <div class="row inpRow">
+                <label class="col-3 label1" for="user-sign-up">Username:</label>
+                <div class="col-9 p-0">
                     <input type="text" class="textbox1" id="user-sign-up">
                 </div>
             </div>
 
             <div class="row inpRow">
-                <label class="col-2 label1" for="pass-sign-up">Password:</label>
-                <div class="col-10">
+                <label class="col-3 label1" for="pass-sign-up">Password:</label>
+                <div class="col-9 p-0">
                     <input type="text" class="textbox1" id="pass-sign-up">
                 </div>
             </div>
             <div class="pb-1">
-                <button class="btn customBtn" type="submit">Sign-up</button>
+                <button class="btn customBtn" id="signUpBtn" type="submit">Sign-up</button>
             </div>
         </form>
     </div>
 </div>
 
 {{!-- scripts currently not finished --}}
-<script src="./js/login"></script>
-<script src="./js/signUp"></script>
+<script src="./js/login.js"></script>

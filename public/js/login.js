@@ -1,9 +1,14 @@
+const loginBtn = document.getElementById('loginBtn');
+const signUpBtn = document.getElementById('signUpBtn');
+
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector('#username-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
+    const username = document.querySelector('#user-login').value.trim();
+    const password = document.querySelector('#pass-login').value.trim();
 
+    console.log(username + password);
     if (username && password) {
         const response = await fetch('api/user/login', {
             method: 'POST',
@@ -22,15 +27,22 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
-    const firstName = document.querySelector('#firstname-signup').value.trim();
-    const lastName = document.querySelector('#lastname-signup').value.trim();
-    const username = document.querySelector('#username-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const firstName = document.querySelector('#Fname-sign-up').value.trim();
+    const lastName = document.querySelector('#Lname-sign-up').value.trim();
+    const username = document.querySelector('#user-sign-up').value.trim();
+    const password = document.querySelector('#pass-sign-up').value.trim();
+
+    console.log(firstName, lastName ,username , password);
 
     if (firstName && lastName && username && password) {
         const response = await fetch('/api/user', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                username: username,
+                password: password 
+            }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -41,3 +53,6 @@ const signupFormHandler = async (event) => {
         }
     }
 }
+
+loginBtn.addEventListener('click', loginFormHandler);
+signUpBtn.addEventListener('click', signupFormHandler);
