@@ -1,6 +1,6 @@
-<div class="container align-items-center">
+<div class="container align-items-center" id="cusW">
     <div class="row col-md-8">
-        <h2>
+        <h2 class="text-white">
             Office Chore List
         </h2>
 
@@ -19,22 +19,33 @@
     </ul>
         <form class="form mb-4 mx-2">
             <div class=" mb-4 mx-2">
-                <label for="newChore" class="form-label">Add Chore:</label>
+                <label for="newChore" class="form-label text-white">Add Chore:</label>
                 <input type="text" name="newChore" class="form-control">
             </div>
             <div class=" mb-4 mx-2">
-                <label for="choreName" class="form-label">Chore Description:</label>
-                <input type="text" name="choreName" class="form-control">
+                <label for="choreName" class="form-label text-white">Chore Description:</label>
+                <textarea type="text" name="choreName" class="form-control" rows="3"></textarea>
             </div>
-            {{!-- <div class="mb-4 mx-2">
-                <label for="user" class="form-label">Assigned to:</label>
+            <div class="mb-4 mx-2">
+                <label for="user" class="form-label text-white">Assigned to:</label>
                 <input list="datalistOptions" class="form-control" id="datalist" placeholder="Select Employee">
                 <datalist id="userList">
-                    ${user.map(user => `<option value="${user}">`).join('')}
+                {{#each user as |user|}}
+                <option value="{{user.first_name}} {{user.last_name}}">
+                {{/each}}
                 </datalist>
-            </div> --}}
+                {{!-- sourcing json into datalist has been very challenging, static list below --}}
+                <datalist id="userlist">
+                    <option value="">Will Doopi</option>
+                    <option value="">Holli Goat</option>
+                    <option value="">Charles Blumbo</option>
+                    <option value="">Veroniconica Gigoo</option>
+                </datalist>
+                <button type="button" class="btn btn-secondary mt-3">Submit</button>
+            </div>
 
         </form>
 
     </div>
 </div>
+<script src="./js/list.js"></script>
