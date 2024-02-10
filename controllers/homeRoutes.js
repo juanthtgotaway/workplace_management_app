@@ -38,7 +38,18 @@ router.get('/', async (req, res) => {
     }
 });
 
-//WE KNOW ROUTES ABOVE WORK
+//get for add report page
+router.get('/reports/add', async (req, res) => {
+    try {
+        res.render('addRep', {
+            // logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//ROUTES ABOVE WORK (ophi)
 
 // //get schedules based off of ID
 // router.get('/schedule/:id', withAuth, async (req, res) => {
@@ -200,18 +211,18 @@ router.get('/', async (req, res) => {
 // });
 
 
-// router.get('/login', async (req, res) => {
-//     try {
-//         if (req.session.logged_in) {
-//             res.redirect('/profile');
-//             return;
-//         }
+router.get('/login', async (req, res) => {
+    try {
+        if (req.session.logged_in) {
+            res.redirect('/profile');
+            return;
+        }
 
-//         res.render('login');
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('login');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 module.exports = router;

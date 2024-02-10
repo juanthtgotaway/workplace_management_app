@@ -7,12 +7,16 @@
                 <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
                 <h1 class="col text-end {{report.status}}">{{report.status}}</h1>
             </div>
-            <div class="infoBody" hidden>
+            <div class="infoBody {{report.status}}Body" hidden>
                 <p>{{report.content}}</p>
-                <p class="text-end names mb-0">Reported by: <b> {{report.user.first_name}} {{report.user.last_name}}</b></p>
+                <p class="text-end names mb-0">Reported by: <b> {{report.user.first_name}} {{report.user.last_name}}</b>
+                </p>
             </div>
         </li>
         {{/each}}
     </ul>
+    <div class="d-flex justify-content-center">
+        <a class="btn customBtn" href="/report/add">+</a>
+    </div>
 </div>
 <script src="./js/list.js"></script>

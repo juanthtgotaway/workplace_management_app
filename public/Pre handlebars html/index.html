@@ -16,45 +16,43 @@
 <body>
     <nav class="container-fluid" id="navbar">
         <div class="row align-items-center justify-content-between">
-            <h1 class="col-6 display-3" id="name">Workplace Manager</h1>
+            <a class="col-6 display-3" id="name" href>Workplace Manager</a>
             <!-- put {{if loggedIn false}} here -->
-            <!-- <a class="col text-end navBtn" id="loginBtn" href="">Login</a> -->
+            <!-- <a class="col text-end navBtn" id="loginBtn" href="/login">Login</a> -->
             <!-- if loggedIn true -->
             <div class="col-6 row justify-content-end" id="navBarBtns">
-                <a class="col-md-auto navBtn" href="" id="reportsBtn">Reports</a>
-                <a class="col-md-auto navBtn" href="" id="toDoBtn">To-Do</a>
+                <a class="col-md-auto navBtn" href="/reports" id="reportsBtn">Reports</a>
+                <a class="col-md-auto navBtn" href="/chores" id="toDoBtn">To-Do</a>
                 <a class="col-md-auto navBtn" href="" id="schedulesBtn">Schedules</a>
             </div>
         </div>
     </nav>
-    <div class="container align-items-center" id="cusW">
-        <ul id="list">
-            <!-- {{each}} -->
-            <li class="text" id="id1">
-                <div class="titleBar row justify-content-between">
-                    <h1 class="col text-start">Hey this is a test title</h1>
-                    <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
-                    <h1 class="col text-end">pending</h1>
+    <div class="container align-items-center">
+        <form class="cusForm">
+            <div class="row inpRow">
+                <label class="col-2 text-center" for="repTitle">Title:</label>
+                <div class="col-10 d-flex d-flex justify-content-start align-items-center">
+                    <input type="text" class="textbox2" id="repTitle">
                 </div>
-                <div class="infoBody" hidden>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis veritatis dolor quia amet, dolore repellendus nobis esse, officiis non numquam eum minima hic maiores ab distinctio et harum? Dolor.</p>
-                    <p class="text-end names mb-0">Reported by: <b> Dave Whatshisname</b></p>
+            </div>
+
+            <div class="row inpRow">
+                <label class="col-2 text-center" for="repContent">Content:</label>
+                <div class="col-10 d-flex d-flex justify-content-start align-items-center">
+                    <input type="text" class="textbox2" id="repContent">
                 </div>
-            </li>
-            <li class="text" id="id2">
-                <div class="titleBar row justify-content-between">
-                    <h1 class="col text-start">Hey this is a test title</h1>
-                    <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
-                    <h1 class="col text-end">pending</h1>
+            </div>
+
+            <div class="row inpRow">
+                <label class="col-2 text-center" for="repStatus">Status:</label>
+                <div class="col-10 d-flex d-flex justify-content-start align-items-center">
+                    <input type="text" class="textbox2" id="repTitle">
                 </div>
-                <div class="infoBody" hidden>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis veritatis dolor quia amet, dolore repellendus nobis esse, officiis non numquam eum minima hic maiores ab distinctio et harum? Dolor.</p>
-                    <p class="text-end names mb-0">Reported by: <b> Dave Whatshisname</b></p>
-                </div>
-            </li>
-        </ul>
+            </div>
+            <!-- figure out if backend can pull list of names for this and user id -->
+        </form>
     </div>
-    <script src="../js/list.js"></script>
+    <!-- <script src="../js/list.js"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
