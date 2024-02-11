@@ -33,7 +33,8 @@ DepEmployees.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'depemployees',
+        modelName: 'depEmployees',
+
     }
 );
 
