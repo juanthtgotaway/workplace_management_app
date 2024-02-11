@@ -33,8 +33,8 @@ DepEmployees.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'departments',
+        modelName: 'depemployees',
     }
 );
 
-module.exports = Departments;
+module.exports = DepEmployees;
