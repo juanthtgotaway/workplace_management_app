@@ -34,6 +34,7 @@ DepEmployees.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'depEmployees',
+
     }
 );
 

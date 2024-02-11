@@ -97,7 +97,35 @@ router.get('/reports/add', async (req, res) => {
 //     }
 // })
 
-// //get all chores?
+//get all chores?
+router.get('/chores', withAuth, async (req, res) => {
+    try {
+        const choreData = await Chores.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['first_name', 'last_name']
+                },
+            ],
+        });
+
+        const userData =  await User.findAll();
+
+        const users = userData.map(user => user.get({ plain: true }))
+
+        const chores = choreData.map((chores) => chores.get({ plain: true }));
+
+
+        res.render('chores', {
+            chores,
+            users,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // router.get('/chores', withAuth, async (req, res) => {
 //     try {
 //         const choreData = await Chores.findAll({
