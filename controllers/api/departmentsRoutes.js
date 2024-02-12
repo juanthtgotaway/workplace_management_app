@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { Departments, User, DepEmployees} = require('../../models');
+const { Departments, User, DepEmployees } = require('../../models');
+const isManager = require('../../utils/isManager');
+
 
 // Get all departments
 router.get('/', async (req, res) => {
@@ -28,7 +30,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new department
-router.post('/', async (req, res) => {
+router.post('/', isManager, async (req, res) => {
   try {
     const newDepartment = await Departments.create(req.body);
     res.status(201).json(newDepartment);
