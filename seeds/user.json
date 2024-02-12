@@ -29,5 +29,13 @@
     "username": "luvcomputer",
     "password": "luvcomputer$$",
     "is_manager": true
+},
+{
+    "id": "5",
+    "first_name": "Billy",
+    "last_name": "Joe-shmo",
+    "username": "BillyJoe",
+    "password": "joethegoat$$",
+    "is_manager": false
 }
 ]
