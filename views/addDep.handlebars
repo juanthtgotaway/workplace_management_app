@@ -1,16 +1,17 @@
 <form id="departmentForm" class="form mb-4 mx-2">
         <div class=" mb-4 mx-2">
-            <label for="departmentName" class="form-label text-white">Add Department:</label>
-            <input type="text" name="departmentName" class="form-control">
+            <label class="form-label text-white" for="newdepName">Add Department:</label>
+            <input type="text" name="departmentName" class="form-control" id="newdepName">
         </div>
         <div class="mb-4 mx-2">
-            <label for="user" class="form-label text-white">Assigned to:</label>
-            <select class="form-select" name="manager" aria-label="Default select example">
+            <label class="form-label text-white" for="depManager" >Assigned to:</label>
+            <select id="depManager" class="form-select" name="manager" aria-label="Default select example">
                 <option selected>Choose Manager</option>
                 {{#each users as |user|}}
-                    <option value="{{user.first_name}}{{user.last_name}}">{{user.first_name}}{{user.last_name}}</option>
+                    <option value="{{user.id}}">{{user.first_name}}{{user.last_name}}</option>
                 {{/each}}
             </select>
-            <button type="submit" class="btn btn-secondary mt-3">Submit</button>
+            <button type="submit" class="btn btn-secondary mt-3" id="addDepBtn">Submit</button>
         </div>
-    </form>
+</form>
+<script src="../js/addDep.js"></script>
