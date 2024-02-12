@@ -43,6 +43,29 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/users/edit', isManager, async (req, res) => {
+    try {
+        const userData = await User.findAll();
+
+        const users = userData.map((user) => user.get({ plain: true }));
+
+        const departmentsData = await Departments.findAll();
+
+        const departments = departmentsData.map((department) => department.get({ plain: true }));
+
+
+        
+        res.render('editEmp', {
+            users,
+            departments,
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //get for add report page
 router.get('/reports/add', withAuth, async (req, res) => {
     try {
@@ -185,7 +208,7 @@ router.get('/departments', withAuth, async (req, res) => {
             include: [{model: User, through: DepEmployees, as: 'department_staff'}]
         });
 
-        const departments = departmentsData.map((departments) => departments.get({ plain: true }));
+        const departments = departmentsData.map((department) => department.get({ plain: true }));
 
         res.render('departments', {
             departments,
