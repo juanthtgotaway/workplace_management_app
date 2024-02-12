@@ -3,7 +3,23 @@ const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require(
 const withAuth = require('../utils/auth');
 const isManager = require('../utils/isManager');
 
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+        });
+
+        const user = userData.get({ plain: true });
+        const isManager = user.is_manager;
+
+        res.render('user', { user, logged_in: true });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/reports', withAuth, async (req, res) => {
+
     try {
         // Get all projects and JOIN with user data
         const reportsData = await Reports.findAll({

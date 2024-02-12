@@ -1,41 +1,130 @@
-[{
-    "id": "1",
-    "first_name": "Will",
-    "last_name": "Doopi",
-    "username": "BigDoop",
-    "password": "password!",
-    "is_manager": true
-},
-{
-    "id": "2",
-    "first_name": "Holli",
-    "last_name": "Goat",
-    "username": "HolliGoat",
-    "password": "HollitheGoat",
-    "is_manager": true
-},
-{
-    "id": "3",
-    "first_name": "Charles",
-    "last_name": "Blumbo",
-    "username": "ChuckB44",
-    "password": "Chuckles2",
-    "is_manager": true
-},
-{
-    "id": "4",
-    "first_name": "Veroniconica",
-    "last_name": "Gigoo",
-    "username": "luvcomputer",
-    "password": "luvcomputer$$",
-    "is_manager": true
-},
-{
-    "id": "5",
-    "first_name": "Billy",
-    "last_name": "Joe-shmo",
-    "username": "BillyJoe",
-    "password": "joethegoat$$",
-    "is_manager": false
-}
+[
+    {
+        "id": "1",
+        "first_name": "Will",
+        "last_name": "Doopi",
+        "username": "BigDoop",
+        "password": "password!",
+        "is_manager": true,
+        "Schedules": [
+            {
+                "day": "Monday",
+                "start_time": "08:00",
+                "end_time": "17:00"
+            },
+            {
+                "day": "Tuesday",
+                "start_time": "08:00",
+                "end_time": "17:00"
+            }
+        ],
+        "Reports": [
+            {
+                "title": "Weekly Report",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            }
+        ],
+        "Chores": [
+            {
+                "chore_name": "Clean Office",
+                "chore_description": "Vacuum floors, dust surfaces, clean windows."
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "first_name": "Holli",
+        "last_name": "Goat",
+        "username": "HolliGoat",
+        "password": "HollitheGoat",
+        "is_manager": true,
+        "Schedules": [
+            {
+                "day": "Wednesday",
+                "start_time": "09:00",
+                "end_time": "18:00"
+            },
+            {
+                "day": "Thursday",
+                "start_time": "09:00",
+                "end_time": "18:00"
+            }
+        ],
+        "Reports": [
+            {
+                "title": "Monthly Report",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+        ],
+        "Chores": [
+            {
+                "chore_name": "Order Supplies",
+                "chore_description": "Check inventory and order necessary supplies."
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "first_name": "Charles",
+        "last_name": "Blumbo",
+        "username": "ChuckB44",
+        "password": "Chuckles2",
+        "is_manager": true,
+        "Schedules": [
+            {
+                "day": "Monday",
+                "start_time": "09:00",
+                "end_time": "18:00"
+            },
+            {
+                "day": "Tuesday",
+                "start_time": "09:00",
+                "end_time": "18:00"
+            }
+        ],
+        "Reports": [
+            {
+                "title": "Quarterly Report",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+        ],
+        "Chores": [
+            {
+                "chore_name": "Monthly Inventory",
+                "chore_description": "Take stock of all inventory items and update records."
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "first_name": "Veroniconica",
+        "last_name": "Gigoo",
+        "username": "luvcomputer",
+        "password": "luvcomputer$$",
+        "is_manager": true,
+        "Schedules": [
+            {
+                "day": "Wednesday",
+                "start_time": "08:00",
+                "end_time": "17:00"
+            },
+            {
+                "day": "Thursday",
+                "start_time": "08:00",
+                "end_time": "17:00"
+            }
+        ],
+        "Reports": [
+            {
+                "title": "Annual Report",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            }
+        ],
+        "Chores": [
+            {
+                "chore_name": "Equipment Maintenance",
+                "chore_description": "Perform routine maintenance checks on office equipment."
+            }
+        ]
+    }
 ]

@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers')
 const helpers = require('./utils/helpers');
+const moment = require('moment');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -37,7 +38,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+    res.locals.currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+    next();
+});
+
 app.use(routes);
+
+
 
 // if browser route is wrong send back to homepage
 app.get('*', (req, res) => {
@@ -53,3 +61,5 @@ sequelize.sync({ force: false }).then(() => {
     // app.use(express.urlencoded({ extended: true }));
 
 });
+
+
