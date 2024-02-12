@@ -17,6 +17,7 @@
     <nav class="container-fluid" id="navbar">
         <div class="row align-items-center justify-content-between">
             <a class="col-6 text-start display-3" id="name" href="/">Workplace Manager</a>
+            <p>Current Date and Time: {{ currentTime }}</p>
             {{#if logged_in}}
             <div class="col-6 row justify-content-end" id="navBarBtns">
                 <a class="col-md-auto navBtn" href="/reports" id="reportsBtn">Reports</a>

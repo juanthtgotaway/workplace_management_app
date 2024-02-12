@@ -3,6 +3,7 @@ const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require(
 const withAuth = require('../utils/auth');
 const isManager = require('../utils/isManager');
 
+
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
