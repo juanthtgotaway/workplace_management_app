@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Departments } = require('../../models');
+const { Departments, User, DepEmployees} = require('../../models');
 
 // Get all departments
 router.get('/', async (req, res) => {
   try {
-    const departments = await Departments.findAll();
+    const departments = await Departments.findAll({
+      include: [{model: User, through: DepEmployees, as: 'department_staff'}]
+  });
     res.status(200).json(departments);
   } catch (err) {
     res.status(500).json(err);

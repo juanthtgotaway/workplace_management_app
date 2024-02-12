@@ -93,11 +93,29 @@ body {
 }
 
 .cusForm {
-    background: rgb(12, 115, 112);
-    background: radial-gradient(circle, rgba(12, 115, 112, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    padding: 3% 2% 2% 2%;
+    margin-top: 3%;
+    background: rgb(10,64,62);
+    background: radial-gradient(circle, rgba(10,64,62,1) 0%, rgba(12,115,112,1) 100%); 
     color: var(--light1);
-    border: 2px solid var(--light1);
+    /* border: 2px solid var(--light1); */
     border-radius: 20px;
+}
+
+.formFont {
+    font-size: x-large;
+}
+
+.formFont label {
+    color: white;
+}
+
+#editBtn {
+    background-color: black;
+    color: #b8b8b8;
+    font-size: large;
+    padding: 0% 10px;
+    width: fit-content;
 }
 
 .textbox2 {

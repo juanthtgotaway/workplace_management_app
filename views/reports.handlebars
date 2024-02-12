@@ -3,14 +3,17 @@
         {{#each reports as |report|}}
         <li class="text" id="{{report.id}}">
             <div class="titleBar row justify-content-between">
+                {{!-- add if ismanager can edit button --}}
                 <h1 class="col text-start">{{report.title}}</h1>
-                <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
                 <h1 class="col text-end {{report.status}}">{{report.status}}</h1>
             </div>
             <div class="infoBody {{report.status}}Body" hidden>
                 <p>{{report.content}}</p>
-                <p class="text-end names mb-0">Reported by: <b> {{report.user.first_name}} {{report.user.last_name}}</b>
-                </p>
+                
+                <div class="row">
+                <button class="btn col-1" id="editBtn" type="submit">✎</button>
+                <p class="text-end names mb-0 col">Reported by: <b> {{report.user.first_name}} {{report.user.last_name}}</b></p>
+                </div>
             </div>
         </li>
         {{/each}}
