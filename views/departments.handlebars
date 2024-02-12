@@ -1,15 +1,26 @@
 <div class="container align-items-center" id="cusW">
+    <div class="row col-md-8">
+        <h2 class="text-white">
+            Department Managers
+        </h2>
+
     <ul id="list">
         {{#each departments as |department|}}
-        <li class="text" id="{{departments.id}}">
+        <li class="text" id="{{department.name}}">
             <div class="titleBar row justify-content-between">
-                <h1 class="col text-start">{{department.name}}</h1>
-                <!-- idea to make color change base on 'pending', 'resolvded', 'closed' -->
-                <h1 class="col text-end {{department.status}}">{{department.department-staff.first_name}}</h1>
+                <h1 class="col text-start">{{department_name}}</h1>
+                {{!-- <h1 class="col text-end {{department.department-staff.first_name}}">{{department.department-staff.first_name}}</h1> --}}
             </div>
-            <div class="infoBody {{departments.status}}Body" hidden>
-                <p>{{departments.content}}</p>
-                <p class="text-end names mb-0">Reported by: <b> {{departments.user.first_name}} {{report.user.last_name}}</b>
+            <div class="infoBody" hidden>
+                {{!-- we could all staff that is managed by this person? --}}
+                {{!-- <p>{{department.manager}}</p> --}}
+                {{#with department}}
+                    {{#each department_staff}}
+                        {{#if is_manager}}
+                            <p class="text-end names mb-0">Managed by: <b>{{first_name}} {{last_name}}</b></p>
+                        {{/if}}
+                    {{/each}}
+                {{/with}}
                 </p>
             </div>
         </li>
@@ -17,6 +28,7 @@
     </ul>
     <div class="d-flex justify-content-center">
         <a class="btn customBtn" href="/report/add">+</a>
+    </div>
     </div>
 </div>
 <script src="./js/list.js"></script>
