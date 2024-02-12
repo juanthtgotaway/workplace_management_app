@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require('../models');
 const withAuth = require('../utils/auth');
+const isManager = require('../utils/isManager');
 
 router.get('/reports', async (req, res) => {
     try {
@@ -191,28 +192,20 @@ router.get('/departments', withAuth, async (req, res) => {
     }
 });
 
-// //get reports by id
-// router.get('/reports/:id', withAuth, async (req, res) => {
-//     try {
-//         const reportData = await Reports.findByPk(req.params.id, {
-//             include: [
-//                 {
-//                     model: Reports,
-//                     attributes: ['id'],
-//                 },
-//             ],
-//         });
+router.get('/departments/add', async (req, res) => {
+    try {
+        const userData = await User.findAll();
+        const users = userData.map((user) => user.get({ plain: true }));
 
-//         const reports = reportData.get({ plain: true });
-
-//         res.render('reports', {
-//             ...reports,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('addDep', {
+            users,
+            logged_in:req.session.logged_in
+        });
+    } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
+    }
+});
 
 
 
@@ -269,14 +262,14 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => {
-    if(req.session.logged_in) {
-        res.redirect('/profile');
-        return;
-    }
+// router.get('/login', (req, res) => {
+//     if(req.session.logged_in) {
+//         res.redirect('/profile');
+//         return;
+//     }
 
-    res.render('login');
-});
+//     res.render('login');
+// });
 
 
 module.exports = router;
