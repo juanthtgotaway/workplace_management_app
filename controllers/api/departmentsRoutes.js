@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new department
-router.post('/', isManager, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newDepartment = await Departments.create(req.body);
     res.status(201).json(newDepartment);
