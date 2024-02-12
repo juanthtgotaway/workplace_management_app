@@ -3,16 +3,24 @@
         {{#each reports as |report|}}
         <li class="text" id="{{report.id}}">
             <div class="titleBar row justify-content-between">
-                {{!-- add if ismanager can edit button --}}
                 <h1 class="col text-start">{{report.title}}</h1>
                 <h1 class="col text-end {{report.status}}">{{report.status}}</h1>
             </div>
             <div class="infoBody {{report.status}}Body" hidden>
                 <p>{{report.content}}</p>
-                
+
                 <div class="row">
-                <button class="btn col-1" id="editBtn" type="submit">✎</button>
-                <p class="text-end names mb-0 col">Reported by: <b> {{report.user.first_name}} {{report.user.last_name}}</b></p>
+                    {{!-- add if ismanager can edit button --}}
+                    <button class="btn col-1" id="editBtn" type="submit">✎</button>
+                    <div class="col repEditBtns" hidden>
+                        <button class="btn reportBtns" id="pendingBtn" type="submit">Pending</button>
+                        <button class="btn reportBtns" id="resolveBtn" type="submit">Resolve</button>
+                        <button class="btn reportBtns" id="closeBtn" type="submit">Close</button>
+                    </div>
+                    
+
+                    <p class="text-end names mb-0 col">Reported by: <b> {{report.user.first_name}}
+                            {{report.user.last_name}}</b></p>
                 </div>
             </div>
         </li>
@@ -22,4 +30,6 @@
         <a class="btn customBtn" href="/reports/add">+</a>
     </div>
 </div>
-<script src="./js/list.js"></script>
+{{!-- <script src="./js/list.js"></script> --}}
+{{!-- if ismanager --}}
+<script src="./js/reports.js"></script>

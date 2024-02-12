@@ -38,7 +38,7 @@ body {
 
 .navBtn {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: x-large;
+    font-size: large;
     text-decoration: none;
     color: var(--mid1);
     padding-right: 20px;
@@ -117,6 +117,24 @@ body {
     padding: 0% 10px;
     width: fit-content;
 }
+
+.reportBtns {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    padding: 0% 10px;
+    width: fit-content;
+}
+#pendingBtn {
+    background-color: rgb(229, 52, 52);
+}
+#resolveBtn {
+    background-color: rgb(61, 164, 61);
+}
+#closeBtn {
+    background-color: black;
+    color: #b8b8b8;
+}
+
 
 .textbox2 {
     width: 95%;

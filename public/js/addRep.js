@@ -9,7 +9,7 @@ const addReportHandler = async (event) => {
     console.log(title, content);
 
     if (title && content) {
-        const response = await fetch('/api/user', {
+        const response = await fetch('/api/reports', {
             method: 'POST',
             body: JSON.stringify({
                 title: title,
