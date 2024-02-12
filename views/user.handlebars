@@ -1,0 +1,51 @@
+<div class="container align-items-center">
+    <h1 class="text-center mb-4">Employees</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Department</th>
+                    <th>Is Manager</th>
+                    <th>Schedule</th>
+                    <th>Reports</th>
+                    <th>Chores</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each employees}} <!-- Use employees instead of user -->
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.first_name}}</td>
+                    <td>{{this.last_name}}</td>
+                    <td>{{this.department}}</td>
+                    <td>{{#if this.is_manager}} Yes {{else}} No {{/if}}</td>
+                    <td>
+                        <ul>
+                            {{#each this.Schedules}} <!-- Note the capitalization -->
+                            <li>{{this.day}}: {{this.start_time}} - {{this.end_time}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {{#each this.Reports}} <!-- Note the capitalization -->
+                            <li>{{this.title}} - {{this.content}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {{#each this.Chores}} <!-- Note the capitalization -->
+                            <li>{{this.chore_name}} - {{this.chore_description}}</li>
+                            {{/each}}
+                        </ul>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

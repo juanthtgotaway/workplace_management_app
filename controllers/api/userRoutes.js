@@ -1,72 +1,91 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const bcrypt = require('bcrypt');
 
-router.get('/', async (req, res) => {
-    try {
-        const userData = await User.findAll();
-        res.status(201).json(userData);
-    } catch (err) {
-        res.status(400).json(err);
+// Route to render the login page
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+        // If the user is already logged in, redirect to the profile page
+        res.redirect('/profile');
+    } else {
+        res.render('login');
     }
 });
 
-
-router.post('/', async (req, res) => {
-    try {
-        const userData = await User.create(req.body);
-
-
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-
-            res.status(200).json(userData);
-        });
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
+// Route to handle user login
 router.post('/login', async (req, res) => {
     try {
+        // Find the user by username
         const userData = await User.findOne({ where: { username: req.body.username } });
-        console.log('TTTTTTTTTTTTEEEEEEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTT')
-        console.log(userData)
 
-
-        if (!userData) {
-            res.status(400).json({ message: '❌ Incorrect email or password, please try again ❌' });
-            return;
+        if (!userData || !bcrypt.compareSync(req.body.password, userData.password)) {
+            // If user not found or password is incorrect, render the login page with an error message
+            return res.status(400).render('login', { error: 'Incorrect username or password' });
         }
 
-        const validPassword = await userData.checkPassword(req.body.password);
+        // Set session variables
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
 
-        if (!validPassword) {
-            res.status(400).json({ message: '❌ Incorrect email or password, please try again ❌' });
-            return;
-        }
-
-        const isManager = userData.is_manager;
-
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            req.session.is_manager = isManager;
-
-            res.json({ user: userData, message: 'You are now logged in!' });
-        });
+        // Redirect to the profile page
+        res.redirect('/profile');
     } catch (err) {
-        res.status(400).json(err);
+        // Render error page with an error message
+        res.status(500).render('error', { error: 'Internal Server Error' });
     }
 });
 
-router.post('/logout', (req, res) => {
+// Route to render the signup page
+router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
+        // If the user is already logged in, redirect to the profile page
+        res.redirect('/profile');
     } else {
-        res.status(404).end();
+        res.render('signup');
+    }
+});
+
+// Route to handle user signup
+router.post('/signup', async (req, res) => {
+    try {
+        // Hash the password before saving it to the database
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        // Create a new user with the hashed password
+        const userData = await User.create({
+            username: req.body.username,
+            password: hashedPassword,
+        });
+
+        // Set session variables
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+
+        // Redirect to the profile page
+        res.redirect('/profile');
+    } catch (err) {
+        // Render error page with an error message
+        res.status(500).render('error', { error: 'Internal Server Error' });
+    }
+});
+
+// Route to handle user logout
+router.post('/logout', (req, res) => {
+    // Destroy the session
+    req.session.destroy(() => {
+        // Redirect to the homepage after logout
+        res.redirect('/');
+    });
+});
+
+// Route to render the profile page
+router.get('/profile', (req, res) => {
+    if (req.session.logged_in) {
+        // If the user is logged in, render the profile page
+        res.render('profile');
+    } else {
+        // If the user is not logged in, redirect to the login page
+        res.redirect('/login');
     }
 });
 

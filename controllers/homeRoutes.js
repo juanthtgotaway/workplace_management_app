@@ -3,6 +3,74 @@ const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require(
 const withAuth = require('../utils/auth');
 const isManager = require('../utils/isManager');
 
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+        });
+
+        const user = userData.get({ plain: true });
+        const isManager = user.is_manager;
+
+        res.render('user', { user, logged_in: true });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/profile');
+    } else {
+        res.render('login');
+    }
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.findOne({ where: { username: req.body.username } });
+
+        if (!userData || !bcrypt.compareSync(req.body.password, userData.password)) {
+            res.status(400).json({ message: 'Incorrect username or password' });
+            return;
+        }
+
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+
+        res.redirect('/profile');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/profile');
+    } else {
+        res.render('signup');
+    }
+});
+
+router.post('/signup', async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const userData = await User.create({
+            username: req.body.username,
+            password: hashedPassword,
+        });
+
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+
+        res.redirect('/profile'); 
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 router.get('/reports', async (req, res) => {
     try {
         // Get all projects and JOIN with user data
