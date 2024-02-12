@@ -3,7 +3,7 @@ const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require(
 const withAuth = require('../utils/auth');
 const isManager = require('../utils/isManager');
 
-router.get('/reports', async (req, res) => {
+router.get('/reports', withAuth, async (req, res) => {
     try {
         // Get all projects and JOIN with user data
         const reportsData = await Reports.findAll({
@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 });
 
 //get for add report page
-router.get('/reports/add', async (req, res) => {
+router.get('/reports/add', isManager, async (req, res) => {
     try {
         res.render('addRep', {
             logged_in: req.session.logged_in,
@@ -198,14 +198,15 @@ router.get('/departments', withAuth, async (req, res) => {
     }
 });
 
-router.get('/departments/add', async (req, res) => {
+router.get('/departments/add', isManager, async (req, res) => {
     try {
         const userData = await User.findAll();
         const users = userData.map((user) => user.get({ plain: true }));
 
         res.render('addDep', {
             users,
-            logged_in:req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
       console.log(err);

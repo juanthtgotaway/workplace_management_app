@@ -18,6 +18,8 @@
             </li>
             {{/each}}
         </ul>
+        {{#if is_manager}}
+            
         <form id="choreForm" class="form mb-4 mx-2">
             <div class=" mb-4 mx-2">
                 <label for="choreName" class="form-label text-white">Add Chore:</label>
@@ -39,6 +41,7 @@
             </div>
 
         </form>
+        {{/if}}
 
     </div>
 </div>

@@ -22,8 +22,8 @@ const newChore = await fetch('/api/chores', {
     body: choreBody
 });
 
-const choreData = await newChore.json();
-return choreData;
+const choreData2 = await newChore.json();
+return choreData2;
 }
 
 // submitButton.addEventListener("click", async (event) => {
