@@ -12,8 +12,11 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background: rgb(113, 113, 113);
     background: linear-gradient(0deg, rgba(9, 9, 9, 1) 0%, rgba(113, 113, 113, 1) 100%);
+    min-height: 100vh;
 }
 
 #navbar {
@@ -95,8 +98,8 @@ body {
 .cusForm {
     padding: 3% 2% 2% 2%;
     margin-top: 3%;
-    background: rgb(10,64,62);
-    background: radial-gradient(circle, rgba(10,64,62,1) 0%, rgba(12,115,112,1) 100%); 
+    background: rgb(10, 64, 62);
+    background: radial-gradient(circle, rgba(10, 64, 62, 1) 0%, rgba(12, 115, 112, 1) 100%);
     color: var(--light1);
     /* border: 2px solid var(--light1); */
     border-radius: 20px;
@@ -124,12 +127,15 @@ body {
     padding: 0% 10px;
     width: fit-content;
 }
+
 #pendingBtn {
     background-color: rgb(229, 52, 52);
 }
+
 #resolveBtn {
     background-color: rgb(61, 164, 61);
 }
+
 #closeBtn {
     background-color: black;
     color: #b8b8b8;
@@ -143,6 +149,7 @@ body {
 #cusW {
     width: 90%;
     margin-top: 2%;
+    height: 100vh;
 }
 
 #cusW ul li {

@@ -20,7 +20,8 @@ router.get('/reports', async (req, res) => {
         
         res.render('reports', {
             reports,
-            // logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
         res.status(500).json(err);
@@ -30,8 +31,10 @@ router.get('/reports', async (req, res) => {
 // get for homepage
 router.get('/', async (req, res) => {
     try {
+        
         res.render('homepage', {
             logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
         console.log(req.session.logged_in);
     } catch (err) {
@@ -43,7 +46,8 @@ router.get('/', async (req, res) => {
 router.get('/reports/add', async (req, res) => {
     try {
         res.render('addRep', {
-            // logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
         res.status(500).json(err);
@@ -120,7 +124,8 @@ router.get('/chores', withAuth, async (req, res) => {
         res.render('chores', {
             chores,
             users,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
         res.status(500).json(err);
@@ -183,7 +188,8 @@ router.get('/departments', withAuth, async (req, res) => {
 
         res.render('departments', {
             departments,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
         console.log(err);
@@ -239,7 +245,7 @@ router.get('/departments', withAuth, async (req, res) => {
 router.get('/login', async (req, res) => {
     try {
         if (req.session.logged_in) {
-            res.redirect('/profile');
+            res.redirect('/');
             return;
         }
 
@@ -262,20 +268,12 @@ router.get('/profile', withAuth, async (req, res) => {
 
         res.render('profile', {
             ...user, 
-            logged_in: true
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
         res.status(500).json(err);
     }
-});
-
-router.get('/login', (req, res) => {
-    if(req.session.logged_in) {
-        res.redirect('/profile');
-        return;
-    }
-
-    res.render('login');
 });
 
 
