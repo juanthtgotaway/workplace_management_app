@@ -3,7 +3,6 @@
         <h2 class="text-white">
             Department Managers
         </h2>
-
     <ul id="list">
         {{#each departments as |department|}}
         <li class="text" id="{{department.name}}">
@@ -27,8 +26,7 @@
         {{/each}}
     </ul>
     <div class="d-flex justify-content-center">
-        <a class="btn customBtn" href="/report/add">+</a>
-    </div>
+        <a class="btn customBtn" href="/departments/add">+</a>
     </div>
 </div>
 <script src="./js/list.js"></script>
