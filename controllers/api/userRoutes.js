@@ -36,41 +36,6 @@ router.post('/login', async (req, res) => {
 });
 
 
-router.post('/login', async (req, res) => {
-    try {
-        const userData = await User.findOne({ where: { username: req.body.username } });
-
-        if (!userData) {
-            res.status(400).json({ message: '❌ Incorrect email or password, please try again ❌' });
-            return;
-        }
-
-        const validPassword = await userData.checkPassword(req.body.password);
-
-
-// Route to handle user signup
-router.post('/signup', async (req, res) => {
-    try {
-        // Hash the password before saving it to the database
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-
-        const isManagerC = userData.is_manager;
-
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            req.session.is_manager = isManagerC;
-
-
-        // Redirect to the profile page
-        res.redirect('/profile');
-    } catch (err) {
-        // Render error page with an error message
-        res.status(500).render('error', { error: 'Internal Server Error' });
-    }
-});
-
 // Route to handle user logout
 router.post('/logout', (req, res) => {
     // Destroy the session
