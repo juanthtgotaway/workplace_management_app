@@ -17,15 +17,19 @@
     <nav class="container-fluid" id="navbar">
         <div class="row align-items-center justify-content-between">
             <a class="col-6 text-start display-3" id="name" href="/">Workplace Manager</a>
-            {{!-- <!-- put {{if loggedIn}} here --> --}}
-            {{!-- <a class="col text-end navBtn" id="loginBtn" href="/login">Login</a> --}}
-            {{!-- <!-- if loggedIn true --> --}}
+            {{#if logged_in}}
             <div class="col-6 row justify-content-end" id="navBarBtns">
                 <a class="col-md-auto navBtn" href="/reports" id="reportsBtn">Reports</a>
                 <a class="col-md-auto navBtn" href="/chores" id="toDoBtn">To-Do</a>
-                <a class="col-md-auto navBtn" href="" id="schedulesBtn">Schedules</a>
-                <a class="col-md-auto navBtn" href="/departments" id="toDoBtn">Departments</a>
+                {{#if is_manager}}
+                <a class="col-md-auto navBtn" href="/users" id="usersBtn">Users</a>
+                {{/if}}
+                {{!-- <a class="col-md-auto navBtn" href="/schedules" id="schedulesBtn">Schedules</a> --}}
+                <a class="col-md-auto navBtn" href="/departments" id="departmentsBtn">Departments</a>
             </div>
+            {{else}}
+            <a class="col text-end navBtn" id="loginNavBtn" href="/login">Login</a>
+            {{/if}}
         </div>
     </nav>
 

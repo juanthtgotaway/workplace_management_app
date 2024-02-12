@@ -57,5 +57,8 @@ const signupFormHandler = async (event) => {
     }
 }
 
+console.log('js recieved');
+console.log(loginBtn)
+
 loginBtn.addEventListener('click', loginFormHandler);
 signUpBtn.addEventListener('click', signupFormHandler);

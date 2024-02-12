@@ -16,7 +16,7 @@ const hbs = exphbs.create({ helpers });
 const sess = {
     secret: 'Secret',
     cookie: {
-        maxAge:300000,
+        maxAge: 300000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
@@ -37,12 +37,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use(routes);
+
+// if browser route is wrong send back to homepage
+app.get('*', (req, res) => {
+    res.render('homepage'); // Render the homepage handlebars template
+});
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+    // app.use(express.json());
+    // app.use(express.urlencoded({ extended: true }));
 
 });
