@@ -12,7 +12,7 @@ router.use('/reports', reports);
 router.use('/chores', chores);
 router.use('/schedule', schedules);
 router.use('/departments', departments);
-router.use('/user', user);
+
 
 
 
