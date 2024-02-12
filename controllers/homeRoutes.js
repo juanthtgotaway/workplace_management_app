@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Departments, Reports, Chores, Schedules } = require('../models');
+const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/reports', async (req, res) => {
@@ -31,8 +31,9 @@ router.get('/reports', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         res.render('homepage', {
-            // logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
         });
+        console.log(req.session.logged_in);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -171,28 +172,24 @@ router.get('/chores', withAuth, async (req, res) => {
 //     }
 // });
 
-// //get all departments?
-// router.get('/departments', withAuth, async (req, res) => {
-//     try {
-//         const departmentsData = await Departments.findAll({
-//             include: [
-//                 {
-//                     model: Departments,
-//                     attributes: [xyz], //help plz
-//                 },
-//             ],
-//         });
+//get all departments?
+router.get('/departments', withAuth, async (req, res) => {
+    try {
+        const departmentsData = await Departments.findAll({
+            include: [{model: User, through: DepEmployees, as: 'department_staff'}]
+        });
 
-//         const departments = departmentsData.map((departments) => departments.get({ plain: true }));
+        const departments = departmentsData.map((departments) => departments.get({ plain: true }));
 
-//         res.render('departments', {
-//             departments,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('departments', {
+            departments,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 // //get reports by id
 // router.get('/reports/:id', withAuth, async (req, res) => {
