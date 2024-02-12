@@ -67,4 +67,25 @@ router.post('/logout', (req, res) => {
     }
 });
 
+router.post('/signup/', async (req, res) => {
+    try {
+        const userData = await User.create({
+            ...req.body
+        })
+
+        let isManagerC = userData.is_manager
+
+        console.log(makeNewUser);
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            req.session.is_manager = isManagerC;
+
+        res.json({ user: makeNewUser, message: 'You are now logged in!' });
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 module.exports = router;

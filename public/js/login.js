@@ -44,7 +44,8 @@ const signupFormHandler = async (event) => {
                 first_name: firstName,
                 last_name: lastName,
                 username: username,
-                password: password 
+                password: password,
+                is_manager: false
             }),
             headers: { 'Content-Type': 'application/json' },
         });

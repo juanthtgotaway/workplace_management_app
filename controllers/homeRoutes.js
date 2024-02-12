@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 });
 
 //get for add report page
-router.get('/reports/add', isManager, async (req, res) => {
+router.get('/reports/add', withAuth, async (req, res) => {
     try {
         res.render('addRep', {
             logged_in: req.session.logged_in,

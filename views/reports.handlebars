@@ -13,13 +13,14 @@
                 <p>{{report.content}}</p>
 
                 <div class="row">
-                    {{!-- add if ismanager can edit button --}}
+                    {{#if is_manager}}                    
                     <button class="btn col-1" id="editBtn" type="submit">✎</button>
                     <div class="col repEditBtns" hidden>
                         <button class="btn reportBtns" id="pendingBtn" type="submit">Pending</button>
                         <button class="btn reportBtns" id="resolveBtn" type="submit">Resolve</button>
                         <button class="btn reportBtns" id="closeBtn" type="submit">Close</button>
                     </div>
+                    {{/if}}
                     
 
                     <p class="text-end names mb-0 col">Reported by: <b> {{report.user.first_name}}
