@@ -1,0 +1,38 @@
+<div class="container align-items-center">
+    <form class="cusForm text-center">
+        <div class="row inpRow formFont">
+            <label class="text-white col-3" for="selUser">Choose Employee:</label>
+            <select id="selUser" class="form-select col" name="employee" aria-label="Default select example">
+                <option selected></option>
+                {{#each users as |user|}}
+                <option value="{{user.id}}">{{user.first_name}}{{user.last_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="row inpRow formFont">
+            <label class="text-white col-3" for="selDep">Change department:</label>
+            <select id="selDep" class="form-select col" name="employee" aria-label="Select Department">
+                <option selected></option>
+                {{#each departments as |department|}}
+                <option value="{{department.id}}">{{department.department_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="row inpRow formFont">
+            <label class="text-white col-3" for="selAdmin">Admin access:</label>
+            <select id="selAdmin" class="form-select col" name="employee" aria-label="Select Department">
+                <option selected></option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+
+            </select>
+        </div>
+
+        <div class="pb-1">
+            <button class="btn customBtn formFont" id="upEmpBtn" type="submit">Update Employee</button>
+        </div>
+    </form>
+</div>
+<script src="../js/editUser.js"></script>

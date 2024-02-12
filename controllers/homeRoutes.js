@@ -3,7 +3,6 @@ const { User, Departments, Reports, Chores, Schedules, DepEmployees } = require(
 const withAuth = require('../utils/auth');
 const isManager = require('../utils/isManager');
 
-
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
@@ -19,60 +18,8 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/profile');
-    } else {
-        res.render('login');
-    }
-});
+router.get('/reports', withAuth, async (req, res) => {
 
-router.post('/login', async (req, res) => {
-    try {
-        const userData = await User.findOne({ where: { username: req.body.username } });
-
-        if (!userData || !bcrypt.compareSync(req.body.password, userData.password)) {
-            res.status(400).json({ message: 'Incorrect username or password' });
-            return;
-        }
-
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-
-        res.redirect('/profile');
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/signup', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/profile');
-    } else {
-        res.render('signup');
-    }
-});
-
-router.post('/signup', async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-        const userData = await User.create({
-            username: req.body.username,
-            password: hashedPassword,
-        });
-
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-
-        res.redirect('/profile'); 
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-
-router.get('/reports', async (req, res) => {
     try {
         // Get all projects and JOIN with user data
         const reportsData = await Reports.findAll({
@@ -112,8 +59,31 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/users/edit', isManager, async (req, res) => {
+    try {
+        const userData = await User.findAll();
+
+        const users = userData.map((user) => user.get({ plain: true }));
+
+        const departmentsData = await Departments.findAll();
+
+        const departments = departmentsData.map((department) => department.get({ plain: true }));
+
+
+        
+        res.render('editEmp', {
+            users,
+            departments,
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //get for add report page
-router.get('/reports/add', async (req, res) => {
+router.get('/reports/add', withAuth, async (req, res) => {
     try {
         res.render('addRep', {
             logged_in: req.session.logged_in,
@@ -254,7 +224,7 @@ router.get('/departments', withAuth, async (req, res) => {
             include: [{model: User, through: DepEmployees, as: 'department_staff'}]
         });
 
-        const departments = departmentsData.map((departments) => departments.get({ plain: true }));
+        const departments = departmentsData.map((department) => department.get({ plain: true }));
 
         res.render('departments', {
             departments,
@@ -267,14 +237,15 @@ router.get('/departments', withAuth, async (req, res) => {
     }
 });
 
-router.get('/departments/add', async (req, res) => {
+router.get('/departments/add', isManager, async (req, res) => {
     try {
         const userData = await User.findAll();
         const users = userData.map((user) => user.get({ plain: true }));
 
         res.render('addDep', {
             users,
-            logged_in:req.session.logged_in
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
         });
     } catch (err) {
       console.log(err);

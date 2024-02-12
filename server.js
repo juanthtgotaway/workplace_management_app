@@ -49,7 +49,10 @@ app.use(routes);
 
 // if browser route is wrong send back to homepage
 app.get('*', (req, res) => {
-    res.render('homepage'); // Render the homepage handlebars template
+    res.render('homepage', {
+            logged_in: req.session.logged_in,
+            is_manager: req.session.is_manager
+    }); // Render the homepage handlebars template
 });
 
 sequelize.sync({ force: false }).then(() => {

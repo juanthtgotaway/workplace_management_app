@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
 const bcrypt = require('bcrypt');
+const { User, DepEmployees } = require('../../models');
 
 // Route to render the login page
 router.get('/login', (req, res) => {
@@ -35,15 +35,18 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Route to render the signup page
-router.get('/signup', (req, res) => {
-    if (req.session.logged_in) {
-        // If the user is already logged in, redirect to the profile page
-        res.redirect('/profile');
-    } else {
-        res.render('signup');
-    }
-});
+
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.findOne({ where: { username: req.body.username } });
+
+        if (!userData) {
+            res.status(400).json({ message: '❌ Incorrect email or password, please try again ❌' });
+            return;
+        }
+
+        const validPassword = await userData.checkPassword(req.body.password);
+
 
 // Route to handle user signup
 router.post('/signup', async (req, res) => {
@@ -51,15 +54,14 @@ router.post('/signup', async (req, res) => {
         // Hash the password before saving it to the database
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        // Create a new user with the hashed password
-        const userData = await User.create({
-            username: req.body.username,
-            password: hashedPassword,
-        });
 
-        // Set session variables
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
+        const isManagerC = userData.is_manager;
+
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            req.session.is_manager = isManagerC;
+
 
         // Redirect to the profile page
         res.redirect('/profile');
@@ -88,5 +90,75 @@ router.get('/profile', (req, res) => {
         res.redirect('/login');
     }
 });
+
+router.post('/signup/', async (req, res) => {
+    try {
+        const userData = await User.create({
+            ...req.body
+        })
+
+        let isManagerC = userData.is_manager
+
+        console.log(makeNewUser);
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            req.session.is_manager = isManagerC;
+
+            res.json({ user: makeNewUser, message: 'You are now logged in!' });
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.put('/update/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    const newDepartmentId = req.body.newDepartmentId;
+    const newAdmin = req.body.admin
+
+    try {
+        // Check if the user already has a department assigned
+        let depEmployee = await DepEmployees.findOne({ where: { user_id: userId } });
+
+        
+
+        if (!depEmployee) {
+            // If the user does not have a department assigned, create a new entry
+            depEmployee = await DepEmployees.create({
+                user_id: userId,
+                department_id: newDepartmentId
+            });
+        } else if (newDepartmentId !== "") {
+            // If the user has a department assigned, update the existing entry
+            await DepEmployees.update({ department_id: newDepartmentId }, {
+                where: {
+                    user_id: userId,
+                },
+            });
+            // depEmployee.department_id = newDepartmentId;
+            // await depEmployee.save();
+        }
+
+        if (newAdmin !== "") {
+            const updatedAdmin = await User.update({ is_manager: newAdmin }, {
+                where: {
+                    id: userId,
+                },
+            });
+            // user.is_manager = newAdmin;
+            // await user.save();
+        }
+
+        const updatedUser = await User.findOne({ where: { id: userId } });
+        const updatedDepEmployee = await DepEmployees.findOne({ where: { user_id: userId } });
+
+        res.status(200).json({ message: 'Employee Updated successfully', updatedData: updatedDepEmployee, updatedAdmin: updatedUser });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 module.exports = router;

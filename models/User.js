@@ -36,9 +36,9 @@ User.init(
             },
         },
         is_manager: {
+            // allowNull: false,
             type: DataTypes.BOOLEAN
         },
-        // dep id deleted
     },
     {
         hooks: {

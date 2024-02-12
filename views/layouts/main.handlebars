@@ -13,7 +13,7 @@
     <title>Workplace Manager</title>
 </head>
 
-<body>
+<body id="test">
     <nav class="container-fluid" id="navbar">
         <div class="row align-items-center justify-content-between">
             <a class="col-6 text-start display-3" id="name" href="/">Workplace Manager</a>
@@ -23,7 +23,8 @@
                 <a class="col-md-auto navBtn" href="/reports" id="reportsBtn">Reports</a>
                 <a class="col-md-auto navBtn" href="/chores" id="toDoBtn">To-Do</a>
                 {{#if is_manager}}
-                <a class="col-md-auto navBtn" href="/users" id="usersBtn">Users</a>
+                                            {{!-- CHANGE BACK TO JUST USER WHEN PAGE IS READY --}}
+                <a class="col-md-auto navBtn" href="/users/edit" id="usersBtn">Users</a>
                 {{/if}}
                 {{!-- <a class="col-md-auto navBtn" href="/schedules" id="schedulesBtn">Schedules</a> --}}
                 <a class="col-md-auto navBtn" href="/departments" id="departmentsBtn">Departments</a>
@@ -33,8 +34,16 @@
             {{/if}}
         </div>
     </nav>
+    <div class="bodyClass">
+        {{{body}}}
+    </div>
 
-    {{{body}}}
+    <div id="footer" class="row text-end">
+        {{#if logged_in}}
+        <a class="col navBtn" id="logoutBtn">Logout</a>
+        <script src="/js/logout.js"></script>
+        {{/if}}
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
