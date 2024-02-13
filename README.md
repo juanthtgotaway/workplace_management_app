@@ -1,55 +1,57 @@
-Work Place App
-Welcome to the Work Place App! This system is designed to streamline the management of employees, departments, schedules, reports, and chores within an organization. With its user-friendly interface and comprehensive features, managing your workforce has never been more efficient.
+# Workplace Manager
 
-Features
-User Management: Create, update, and delete user accounts with customizable roles and permissions.
-Department Management: Organize employees into departments and assign managers to oversee each department.
-Schedule Management: Easily create and manage employee schedules, ensuring proper coverage and shift assignments.
-Report Management: Generate and view reports on employee performance, attendance, and other key metrics.
-Chore Management: Assign and track chores or tasks to be completed by employees or departments.
+![Github license](https://shields.io/badge/license-MIT-orange)
+https://workplace-management-app-ad243e4e571c.herokuapp.com/
+![alt text](./assets/LandingPage.png)
+![alt text](./assets/LOGIN.png)
 
 
-Installation
-Clone this repository to your local machine:
 
-bash
-git clone https://github.com/jamesbruckner/workplace_management_app.git
-
-Navigate to the project directory:
-bash
-cd workplace-/management_app
-
-Install dependencies:
-npm install
-Set up environment variables:
-
-Create a .env file in the root directory.
-Add the necessary environment variables, such as database connection details and session secrets, following the format specified in .env.example.
-
-Set up the database:
-Create a database for the application (e.g., using MySQL).
-Update the database configuration in config/connection.js with your database details.
-
-Usage
-User Registration: Users can register for an account by providing their information and selecting a department.
-User Login: Registered users can log in to access their dashboard and perform various actions based on their role and permissions.
-Administrator Dashboard: Administrators have access to advanced functionalities such as user management, department management, and report generation.
-Employee Dashboard: Employees can view their schedules, submit reports, and complete assigned chores.
-Manager Dashboard: Managers have additional capabilities, such as overseeing department schedules and approving reports submitted by their team members.
+## Description
+The motive behind this application was to help solve a managing problem as an all in one platform to help add departments, add chores, add users, assign managers, and more. While working on this project there was a lot of things I learned along the way. Some being the following: 
+* The importance of your seeds. This was very crucial in linking all the information to the departments. Knowing how to reference the seeds information on the front end was also a challenge on the handlebars part. .  
+* How to properly test routes. I was in charge of making sure the routes worked with insomnia and the department handlebars. The good thing I didnt know that would help was how to read the information that was being sent as a request on insomnia would help get an idea of how to sort the handlebar in order to make sure the proper information would be called back. 
+![alt text](./assets/Dept.png)
 
 
-Technologies Used
-Node.js
-Express.js
-Sequelize (ORM)
-MySQL (Database)
-Handlebars (Template Engine)
-Bootstrap (Frontend Framework)
+## Table of Contents
+-[Descriptions](#Descriptions)
+-[Installation](#Installation)
+-[Usage](#Usage)
+-[Credits](#Credits)
+-[Tests](#Tests)
+-[License](#License)
+-[Questions](##Questions)
+
+## Installation
+In order to install this project you will have to clone the repository: 
+    1. Create a place where you will want to store all this information 
+    2. Once there open GitBash
+    3. Clone this repository into the file you will have this stored in
+            enter following: git@github.com:jamesbruckner/workplace_management_app.git
+    4. Press enter to create your local clone
+
+![alt text](./assets/AddingDep.png)
 
 
-Contributing
-Ophelia Early, Juan Acevedo Martinex, James Bruckner, Lily Vanderbloemen
+## Usage
+This can be used to manage your team! 
 
-License
-This project is licensed under the MIT License.
+## Credits
+Credits to my amazing team. They helped tremendously in this project whenever I would get stuck. Check out their repos:
+[Ophelia](https://github.com/MoonstruckOccultist)
+[James](https://github.com/jamesbruckner)
+[Lilly](https://github.com/lilyvander)
 
+![alt text](./assets/DepAdded.png)
+
+
+
+## Tests
+N/A
+## License
+MIT
+
+## Questions
+If you have any questions or concerns feel free to reach out via the following:
+GitHub:[juanthtgotaway](https://github.com/juanthtgotaway)
