@@ -1,3 +1,33 @@
-<div class="container">
-    <p>Only managers should be able to see this</p>
+<div class="container align-items-center" id="cusW">
+    <h2 class="text-white">
+        Employees
+    </h2>
+    <ul id="list">
+        {{#each users as |user|}}
+        <li class="text" id="{{user.id}}">
+            <div class="titleBar row justify-content-between">
+                <h1 class="col text-start">{{user.first_name}} {{user.last_name}}</h1>
+                <h1 class="col text-end">{{user.username}}</h1>
+            </div>
+            <div class="infoBody" hidden>
+                {{!-- <p>{{user.users_department.department_name}}</p> --}}
+
+                {{!-- if we get chores working ad them here --}}
+                {{!-- w --}}
+                {{!-- <div class="row"> --}}
+
+                    {{!-- <p class="text-end names mb-0 col">Reported by: <b> {{report.user.first_name}}{{!--
+                            {{report.user.last_name}}{{!-- </b></p> --}}
+                    {{!-- </div> --}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{#if is_manager}}
+    <div class="d-flex justify-content-center">
+        <a class="btn customBtn" href="/user/edit">✎</a>
+    </div>
+    {{/if}}
 </div>
+
+<script src="./js/list.js"></script>
